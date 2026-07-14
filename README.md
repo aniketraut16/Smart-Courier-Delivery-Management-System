@@ -1,7 +1,7 @@
 # Smart Courier Delivery Management System
 ### High-Level Project Planning Document (Microservices Architecture)
 
-**Training Program:** Java Spring Boot Refresher – Capgemini
+**Training Program:** Java Spring Boot Refresher – couriersystem
 **Stack:** Java 21, Spring Boot 3, Spring Data JPA (Hibernate), PostgreSQL, Spring Security (JWT), Bean Validation, Lombok, SLF4J + Logback, Global Exception Handling, Swagger/OpenAPI, JUnit 5 + Mockito, Maven, **Spring AI** (structured output extraction)
 **Architecture Style:** Microservices (3 services, database-per-service, synchronous REST communication)
 
@@ -280,7 +280,7 @@ Each microservice is a **separate Spring Boot application** (own `pom.xml`, own 
 courier-system/                     (parent Maven project - optional multi-module wrapper)
 │
 ├── user-auth-service/
-│   ├── src/main/java/com.capgemini.courier.auth
+│   ├── src/main/java/com.couriersystem.courier.auth
 │   │   ├── config/                 # Security config, Swagger config, JWT config
 │   │   ├── controller/             # Auth, User, Address, Courier controllers
 │   │   ├── dto/ (request/response)
@@ -294,7 +294,7 @@ courier-system/                     (parent Maven project - optional multi-modul
 │   └── src/test/java/...           # Unit tests
 │
 ├── booking-service/
-│   ├── src/main/java/com.capgemini.courier.booking
+│   ├── src/main/java/com.couriersystem.courier.booking
 │   │   ├── ai/                      # Spring AI: ChatClient config, prompt templates,
 │   │   │                            #   AiBookingExtractionService, BookingExtraction DTO
 │   │   ├── client/                 # WebClient/Feign client to User & Auth Service
@@ -311,7 +311,7 @@ courier-system/                     (parent Maven project - optional multi-modul
 │   └── src/test/java/...
 │
 └── delivery-tracking-service/
-    ├── src/main/java/com.capgemini.courier.delivery
+    ├── src/main/java/com.couriersystem.courier.delivery
     │   ├── client/                  # WebClient/Feign clients to Booking & User-Auth services
     │   ├── config/
     │   ├── controller/
