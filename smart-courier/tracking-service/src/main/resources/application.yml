@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: tracking-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tracking_service_db
+    username: dummy_user
+    password: dummy_password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+server:
+  port: 8083
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+jwt:
+  secret: dummy_jwt_secret_placeholder_replace_me_in_production
+  expiration: 86400000
+  refresh-expiration: 604800000
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: FULL
+logging:
+  level:
+    root: INFO
+    com.smartcourier.trackingservice: DEBUG
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

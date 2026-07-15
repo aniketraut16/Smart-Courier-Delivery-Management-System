@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/v1/users/**
+        - id: booking-service
+          uri: lb://booking-service
+          predicates:
+            - Path=/api/v1/bookings/**
+        - id: tracking-service
+          uri: lb://tracking-service
+          predicates:
+            - Path=/api/v1/trackings/**
+        - id: notification-service
+          uri: lb://notification-service
+          predicates:
+            - Path=/api/v1/notifications/**
+server:
+  port: 8080
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+jwt:
+  secret: dummy_gateway_jwt_secret_placeholder_replace_me
+  expiration: 86400000
+  refresh-expiration: 604800000
+logging:
+  level:
+    root: INFO
+    com.smartcourier.gateway: DEBUG
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
