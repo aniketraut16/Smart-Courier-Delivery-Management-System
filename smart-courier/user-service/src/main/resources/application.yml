@@ -24,6 +24,8 @@ jwt:
   secret: dummy_jwt_secret_placeholder_replace_me_in_production
   expiration: 86400000
   refresh-expiration: 604800000
+  secret-key: "REPLACE_WITH_A_BASE64_ENCODED_256_BIT_SECRET"
+  expiration-ms: 86400000
 logging:
   level:
     root: INFO
@@ -33,3 +35,5 @@ management:
     web:
       exposure:
         include: health,info
+internal:
+  api-key: "REPLACE_WITH_AN_INTERNAL_SERVICE_KEY"
